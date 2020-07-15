@@ -17,8 +17,10 @@ Router.prototype = {
     rootElem: undefined,
     constructor: function (routes) {
         this.routes = routes;
+        //Tìm vùng root qua id
         this.rootElem = document.getElementById('app');
     },
+    //Tạo hash mới
     init: function () {
         var r = this.routes;
         (function(scope, r) { 
@@ -28,6 +30,7 @@ Router.prototype = {
         })(this, r);
         this.hasChanged(this, r);
     },
+    //Khi hash thay đổi thì iclude file html đã được xác định
     hasChanged: function(scope, r){
         if (window.location.hash.length > 0) {
             for (var i = 0, length = r.length; i < length; i++) {
@@ -45,6 +48,7 @@ Router.prototype = {
             }
         }
     },
+    //Lấy file html để include vào file index (mặc định folder views)
     goToRoute: function (htmlName) {
         (function(scope) { 
             var url = 'views/' + htmlName,

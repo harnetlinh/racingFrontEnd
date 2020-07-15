@@ -1,0 +1,43 @@
+<div class="container">
+    <center>
+        <h1 id="title-add-product">Thêm mẫu ô tô mới vào Showroom</h1>
+    </center>
+
+    <div class="form-group">
+        <label for="exampleInputName">Tên mẫu xe</label>
+        <input type="text" class="form-control" id="exampleInputName">
+    </div>
+
+    <div class="form-group">
+        <label for="listBrand">Hãng xe</label>
+        <select class="form-control" id="listBrand" onchange="selectBrand(this);">
+            <!-- Danh sách các brand -->
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="listType">Loại xe</label>
+        <select class="form-control" id="listType" onchange="selectType(this);">
+            <!-- Danh sách các type -->
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPrice">Giá niêm yết</label>
+        <input type="number" class="form-control" id="exampleInputPrice">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputColor">Màu xe</label>
+        <input type="text" class="form-control" id="exampleInputColor">
+    </div>
+
+    <div class="form-group" id="imgProducts">
+        <label for="files">Một số ảnh minh hoạ về mẫu xe</label>
+        <input type="file" class="form-control-file" id="files" name="files[]" multiple>
+        <small id="imagehelp" class="form-text text-muted">Bạn chỉ có thể đăng tối đa 9MB.</small>
+    </div>
+    
+    <button type="button" class="btn btn-primary" id="btn-addProduct" onclick="getBase64();">Thêm mẫu xe</button>
+</div>
+

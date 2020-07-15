@@ -1,0 +1,36 @@
+#title-add-product{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+input[type="file"] {
+    display: block;
+}
+.imageThumb {
+    max-height: 120px;
+    border: 2px solid;
+    padding: 1px;
+    cursor: pointer;
+    justify-content: center;
+}
+.pip {
+    display: inline-block;
+    margin: 10px 10px 0 0;
+}
+.remove {
+    display: block;
+    background: #353b48;
+    border: 1px solid black;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 5px;
+}
+.remove:hover {
+    background: #c23616;
+    color: white;
+}
+
+#btn-addProduct{
+    width: 100%;
+}
