@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title page -->
+    <title>Showroom</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./src/images/favicon.ico" type="image/x-icon">
+    <!-- Base -->
+    <base href="/">
+    <!-- CSS Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- JS Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Redirect -->
+    <script src="./switch/redirect.js"></script>
+    <script>redirect()</script>
+    <!-- CSS Custom (Navbar, Footer) -->
+    <link rel="stylesheet" href="./src/css/navbar.css">
+    <link rel="stylesheet" href="./src/css/footer.css">
+    <!-- jQuery for Navbar -->
+    <script src="./src/js/navbar.js"></script>
+    <!-- Templates -->
+    <script src="./templates/homepage.js"></script>
+    <script src="./templates/addproduct.js"></script>
+    <script src="./templates/managementproduct.js"></script>
+    <script src="./templates/updateproduct.js"></script>
+
+    <script src="./ajax/addProduct.js"></script>
+    <script src="./ajax/deleteProduct.js"></script>
+
+</head>
+<body>
+    <!-- NAVBAR START -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#" onclick="changeApp('/'); return false;">Showroom Ô tô</a>
+            <button class="navbar-toggler" type="button" data-trigger="#main_nav">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse" id="main_nav">
+        
+        <div class="offcanvas-header mt-3">  
+            <button class="btn btn-outline-danger btn-close float-right"> &times Close </button>
+            <h5 class="py-2 text-white">Showroom Ô tô</h5>
+        </div>
+        
+        <ul class="navbar-nav">
+            <!-- Title -->
+            <li class="nav-item active"> <a class="nav-link" href="#"> Trang chủ </a> </li>
+            <!-- Toggle menu 1 -->
+            <li class="nav-item dropdown">
+                <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">  Loại ô tô  </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#"> Loại ô tô 1 </a></li>
+                    <li><a class="dropdown-item" href="#"> Loại ô tô 2 </a></li>
+                    <li><a class="dropdown-item" href="#"> Loại ô tô 3 </a></li>
+                </ul>
+            </li>
+            <!-- Toggle menu 2 -->
+            <li class="nav-item dropdown">
+                <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">  Hãng sản xuất  </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#"> Hãng sản xuất 1 </a></li>
+                    <li><a class="dropdown-item" href="#"> Hãng sản xuất 2 </a></li>
+                    <li><a class="dropdown-item" href="#"> Hãng sản xuất 3 </a></li>
+                </ul>
+            </li>
+            <!-- Toggle menu 3 -->
+            <li class="nav-item dropdown">
+                <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">  Quản lý sản phẩm  </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#" onclick="changeApp('/addproduct'); return false;"> Thêm sản phẩm </a></li>
+                    <li><a class="dropdown-item" href="#" onclick="changeApp('/managementproduct'); return false;"> Quản lý sản phẩm </a></li>
+                </ul>
+            </li>
+        </ul>
+        <!-- Menu right -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-user-plus" aria-hidden="true"></i> Đăng ký </a></li>
+            <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-sign-in" aria-hidden="true"></i> Đăng nhập </a></li>
+            <li class="nav-item"><a class="nav-link" href="#" id="cart"><i class="fa fa-cart-plus" aria-hidden="true"></i> Giỏ hàng </a></li>
+        </ul>
+            </div> <!-- navbar-collapse.// -->
+        </div>
+    </nav>
+    <!-- END NAVBAR -->
+
+
+
+    <!-- START APP -->
+
+        <!-- <script src="./ajax/addProduct.js"></script> -->
+        <div id="app">
+
+        </div>
+
+    <!-- END APP -->
+
+
+
+    <!-- FOOTER START -->
+    <footer class="page-footer font-small stylish-color-dark">
+        <!-- Footer Links -->
+        <div class="container text-center text-md-left">
+            <!-- Grid row -->
+            <div class="row">
+                <!-- Grid column -->
+                <div class="col-md-4 mx-auto">
+                    <!-- Content -->
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Footer Logo</h5>
+                    <p>Showroom gì đó về ô tô</p>
+                </div>
+                <!-- Grid column -->
+                <hr class="clearfix w-100 d-md-none">
+                <!-- Grid column -->
+                <div class="col-md-2 mx-auto">
+                    <!-- Links -->
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">About us</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="#!">Link 1</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 3</a>
+                        </li>
+                        <li>
+                            <a href="#!">Link 4</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Grid column -->
+                
+                <hr class="clearfix w-100 d-md-none">
+                <!-- Grid column -->
+                <div class="col-md-2 mx-auto">
+                    <!-- Links -->
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Follow Us On</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-facebook-square" aria-hidden="true"></i>Facebook</li>
+                        <li><i class="fa fa-youtube-square" aria-hidden="true"></i>Youtube</li>
+                        <li><i class="fa fa-twitter-square" aria-hidden="true"></i>Twitter</li>
+                        <li><i class="fa fa-instagram" aria-hidden="true"></i>Instagram</li>
+                    </ul>
+                </div>
+                <!-- Grid column -->
+                <hr class="clearfix w-100 d-md-none">
+                <!-- Grid column -->
+                <div class="col-md-2 mx-auto">
+                    <!-- Links -->
+                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Payment</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <img src="./src/images/visa.png" class="img-fluid" alt="Responsive image" id="img-visa">
+                        </li>
+                        <li>
+                            <img src="./src/images/airpay.png" class="img-fluid" alt="Responsive image" id="img-visa">
+                        </li>
+                    </ul>
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+        </div>
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2020 Copyright:
+            <a href="#" id="carLink"> Car.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- END FOOTER -->
+
+    <!-- App: switch app -->
+    <script type="text/javascript" src="./switch/app.js"></script>
+    <!-- <div id="img"></div> -->
+</body>
+</html>
+
+<script>
+    function load(e) {  
+        var filesimg = e.files[0];
+          filesLength = files.length;
+          var fileReader = new FileReader();
+          fileReader.readAsDataURL(filesimg);
+          fileReader.onload = function(e) {
+            var file = e.target;
+            let html = "<span class=\"pip\">" +
+              "<img class=\"imageThumb\" src=\"" + e.target.result + "\" />" +
+              "<br/><span class=\"remove\" onclick=" + "removeFileName();" + " id=" + "pip" + ">Xoá ảnh</span>" +
+              "</span>";
+              $(html).appendTo("#imgProducts");
+            $(".remove").click(function(){
+              $(this).parent(".pip").remove();
+            });
+          };
+      }
+</script>
