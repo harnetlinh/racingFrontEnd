@@ -23,7 +23,9 @@ function loadAllProduct(){
             '</div>';
         }
 
-        localStorage.setItem("loadAllProduct", product);
+        $(document).ready(function () {
+            $(product).appendTo("#productList");
+        });
     }
 }
 
@@ -31,8 +33,6 @@ loadAllProduct();
 
 let homepage = `
     <div class="container" id="showProducts">
-        <div class="row" id="productList">`
-        + localStorage.getItem("loadAllProduct") +   
-        `</div>
+        <div class="row" id="productList"></div>
     </div>
 `;

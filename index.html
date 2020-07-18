@@ -35,13 +35,14 @@
 
     <script src="./ajax/addProduct.js"></script>
     <script src="./ajax/deleteProduct.js"></script>
+    <script src="./ajax/updateProduct.js"></script>
 
 </head>
 <body>
     <!-- NAVBAR START -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
-            <a class="navbar-brand" href="#" onclick="changeApp('/'); return false;">Showroom Ô tô</a>
+            <a class="navbar-brand" href="#" onclick="changeHome('/'); return false;">Showroom Ô tô</a>
             <button class="navbar-toggler" type="button" data-trigger="#main_nav">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -77,8 +78,8 @@
             <li class="nav-item dropdown">
                 <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">  Quản lý sản phẩm  </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#" onclick="changeApp('/addproduct'); return false;"> Thêm sản phẩm </a></li>
-                    <li><a class="dropdown-item" href="#" onclick="changeApp('/managementproduct'); return false;"> Quản lý sản phẩm </a></li>
+                    <li><a class="dropdown-item" href="#" onclick="changeAdd('/addproduct'); return false;"> Thêm sản phẩm </a></li>
+                    <li><a class="dropdown-item" href="#" onclick="changeManagement('/managementproduct'); return false;"> Quản lý sản phẩm </a></li>
                 </ul>
             </li>
         </ul>
@@ -97,10 +98,7 @@
 
     <!-- START APP -->
 
-        <!-- <script src="./ajax/addProduct.js"></script> -->
-        <div id="app">
-
-        </div>
+    <div id="app"></div>
 
     <!-- END APP -->
 

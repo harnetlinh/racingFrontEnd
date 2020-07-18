@@ -1,54 +1,52 @@
-function getListBrand(){
-    let http = new XMLHttpRequest();
-    let url = "http://localhost:3000/getBrand";
-    http.open("GET", url, true);
-    http.send();
-    http.onload = function(){
-        let data = JSON.parse(this.responseText);
+// function getListBrand(){
+//     let http = new XMLHttpRequest();
+//     let url = "http://localhost:3000/getBrand";
+//     http.open("GET", url, true);
+//     http.send();
+//     http.onload = function(){
+//         let data = JSON.parse(this.responseText);
 
-        let listBrand = "<option></option>"
+//         let listBrand = "<option></option>"
 
-        for(var i = 0; i < data.length; i++){
-            listBrand += "<option id=" + data[i].brandID +">" + 
-            data[i].brandName +
-            "</option>";
-        }
+//         for(var i = 0; i < data.length; i++){
+//             listBrand += "<option id=" + data[i].brandID +">" + 
+//             data[i].brandName +
+//             "</option>";
+//         }
 
-        localStorage.setItem("getListBrand", listBrand);
-    }
-}
+//         localStorage.setItem("getListBrand", listBrand);
+//     }
+// }
 
-function getListType(){
-    let http = new XMLHttpRequest();
-    let url = "http://localhost:3000/getCarType";
-    http.open("GET", url, true);
-    http.send();
-    http.onload = function(){
-        let data = JSON.parse(this.responseText);
+// function getListType(){
+//     let http = new XMLHttpRequest();
+//     let url = "http://localhost:3000/getCarType";
+//     http.open("GET", url, true);
+//     http.send();
+//     http.onload = function(){
+//         let data = JSON.parse(this.responseText);
 
-        let listType = "<option></option>";
+//         let listType = "<option></option>";
 
-        for(var i = 0; i < data.length; i++){
-            listType += "<option id=" + data[i].typeID+">" + 
-            data[i].typeName +
-            "</option>";
-        }
+//         for(var i = 0; i < data.length; i++){
+//             listType += "<option id=" + data[i].typeID+">" + 
+//             data[i].typeName +
+//             "</option>";
+//         }
 
-        localStorage.setItem("getListType", listType);
-    }
-}
+//         localStorage.setItem("getListType", listType);
+//     }
+// }
 
-getListBrand();
+// getListBrand();
 
-getListType();
+// getListType();
 
 let addproduct = `
     <div class="container" id="addProduct">
         <center>
             <h1 id="title-add-product">Thêm mẫu ô tô mới vào Showroom</h1>
         </center>
-
-        <button type="button" class="btn btn-primary" onclick="changeApp('/'); return false;">Về trang chủ</button>
 
         <div class="form-group">
             <label for="exampleInputName">Tên mẫu xe</label>
@@ -57,16 +55,12 @@ let addproduct = `
 
         <div class="form-group">
             <label for="listBrand">Hãng xe</label>
-            <select class="form-control" id="listBrand" onchange="selectBrand(this);">`
-            + localStorage.getItem("getListBrand") +
-            ` </select>
+            <select class="form-control" id="listBrand" onchange="selectBrand(this);"></select>
         </div>
 
         <div class="form-group">
             <label for="listType">Loại xe</label>
-            <select class="form-control" id="listType" onchange="selectType(this);">`
-            + localStorage.getItem("getListType") +
-            ` </select>
+            <select class="form-control" id="listType" onchange="selectType(this);"></select>
         </div>
 
         <div class="form-group">

@@ -64,10 +64,14 @@ function AddProduct(){
 
             http.onload = function(){
                 if(this.readyState == 4 && this.status == 200){
-                  changeApp('/');
+                  changeHome('/');
                   return false;
+                }else{
+                    alert("Thêm sản phẩm thất bại!");
+                    changeAdd("/addproduct");
+                }
             }
-        }
+
             http.send(JSON.stringify(Product));
 
         }else{
