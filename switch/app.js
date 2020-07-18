@@ -8,6 +8,8 @@ let routes = {
     '/addproduct': addproduct,
     '/managementproduct': managementproduct,
     '/updateproduct': updateproduct,
+    '/updateimagesproduct': updateimagesproduct,
+    '/detailproduct': detailproduct,
 }
 
 //onpopstate
@@ -45,7 +47,7 @@ let changeHome = (pathName) => {
                 '<h5 class="card-title">' + data[i].productName + '</h5>' +
                 '<p class="card-text">' + data[i].brandName + '</p>' +
                 '<h5 class="card-title" id="price">' + data[i].productPrice + '</h5>' +
-                '<button type="button" class="btn btn-primary mb">Show Detail</button>' +
+                '<button type="button" class="btn btn-primary mb" id="' + data[i].productID +'" onclick="changeDetailProduct(' + "'/detailproduct', this.id" +'); return false;">Show Detail</button>' +
                 '</div>' +
                 '</div>' + 
                 '</div>';
@@ -141,8 +143,9 @@ let changeManagement = (pathName) =>{
                     '<td>' + data[i].typeName + '</td>' +
                     '<td>' + data[i].productColor + '</td>' +
                     '<td>' + data[i].productPrice + '</td>' +
-                    '<td> <button type="submit" class="btn btn-primary" id="' + data[i].productID + '" onclick="changeUpdate(' + "'/updateproduct', this.id" +'); return false;"> Edit </button>' +
-                    '<button type="submit" class="btn btn-primary" id="' + data[i].productID + '" onclick="deleteProduct(this.id)"> Delete </button>' + 
+                    '<td> <button type="submit" class="btn btn-primary" id="' + data[i].productID + '" onclick="changeUpdate(' + "'/updateproduct', this.id" +'); return false;"> Cập nhật thông tin </button>' +
+                    '<button type="submit" class="btn btn-primary" id="' + data[i].productID + '" onclick="changeUpdateImagesProduct(' + "'/updateimagesproduct', this.id" + ')"> Cập nhật ảnh  </button>' + 
+                    '<button type="submit" class="btn btn-primary" id="' + data[i].productID + '" onclick="deleteProduct(this.id)"> Xoá </button>' + 
                     '</td>' +
                 '</tr>';
     
@@ -158,7 +161,7 @@ let changeManagement = (pathName) =>{
     loadTable();
 }
 
-//Update
+//Update information product
 let changeUpdate = (pathName, id) =>{
 
     function getListBrandUpdate(){
@@ -260,6 +263,55 @@ let changeUpdate = (pathName, id) =>{
     }
 
     getDataUpdate();
+}
+
+//Update images product
+let changeUpdateImagesProduct = (pathName) =>{
+    window.history.pushState({}, pathName, window.location.origin + pathName);
+    app.innerHTML = routes[pathName];
+
+}
+
+// Detail product
+let changeDetailProduct = (pathName, id) =>{
+    window.history.pushState({}, pathName, window.location.origin + pathName);
+    app.innerHTML = routes[pathName];
+
+    window.location.hash = id;
+
+    function getInformationofOneProduct(){
+        let hash = window.location.hash.substr(1);
+
+        let http = new XMLHttpRequest();
+
+        let url = "http://localhost:3000/getOneProduct/";
+
+        http.open("GET", url + hash, true);
+
+        http.send();
+
+        http.onload = function() {
+            let data = JSON.parse(this.responseText);
+
+            let detailProduct = "<center>" + 
+            "<img src=" +  data.image[0].image_ + " class=" + "rounded mx-auto d-block" + "alt=" + data.information[0].productName + " id=" + "imgProduct" + ">" +
+            "<p class=" + "h1" + ">" + "Tên mẫu xe: " + data.information[0].productName + "</p>" + 
+            "<p class=" + "h3" + ">" + "Tên hãng xe: " + data.information[0].brandName + "</p>" +
+            "<p class=" + "h3" + ">" + "Loại xe: " + data.information[0].typeName + "</p>" +
+            "<p class=" + "h3" + ">" + "Màu sắc: " + data.information[0].productColor + "</p>" +
+            "<p class=" + "h3" + " id=" + "priceProduct" + ">" + "Giá tiền: " + data.information[0].productPrice + "</p>" +
+            "</center>";
+
+            console.log(detailProduct)
+
+            $(document).ready(function () {
+                $(detailProduct).appendTo("#informationPoduct");
+            });
+        }
+    }
+
+    getInformationofOneProduct();
+
 }
 
 //Inlucde html to index

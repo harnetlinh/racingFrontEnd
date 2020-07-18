@@ -1,5 +1,8 @@
 let managementproduct = `
     <div class="container">
+        <center>
+            <h1 id="title-add-product">Quản lý sản phẩm</h1>
+        </center>
         <table class="table table-striped">
             <thead>
                 <tr>

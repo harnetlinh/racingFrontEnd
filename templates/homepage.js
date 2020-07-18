@@ -17,7 +17,7 @@ function loadAllProduct(){
             '<h5 class="card-title">' + data[i].productName + '</h5>' +
             '<p class="card-text">' + data[i].brandName + '</p>' +
             '<h5 class="card-title" id="price">' + data[i].productPrice + '</h5>' +
-            '<button type="button" class="btn btn-primary mb">Show Detail</button>' +
+            '<button type="button" class="btn btn-primary mb" id="' + data[i].productID +'" onclick="changeDetailProduct(' + "'/detailproduct', this.id" +'); return false;">Show Detail</button>' +
             '</div>' +
             '</div>' + 
             '</div>';
@@ -33,6 +33,9 @@ loadAllProduct();
 
 let homepage = `
     <div class="container" id="showProducts">
+        <center>
+            <h1 id="title-add-product">Những mẫu xe trong Showroom</h1>
+        </center>
         <div class="row" id="productList"></div>
     </div>
 `;
