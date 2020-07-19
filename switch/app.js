@@ -39,6 +39,7 @@ let changeHome = (pathName) => {
             var product = "";
             
             for(var i = 0; i < data.length; i++){
+                
                 product += 
                 '<div class="col-md-4 Product">' +
                 '<div class="card mb">' +
@@ -266,9 +267,78 @@ let changeUpdate = (pathName, id) =>{
 }
 
 //Update images product
-let changeUpdateImagesProduct = (pathName) =>{
+let changeUpdateImagesProduct = (pathName, id) =>{
     window.history.pushState({}, pathName, window.location.origin + pathName);
     app.innerHTML = routes[pathName];
+    window.location.hash = id;
+
+    function getImgaesProduct(){
+        let productID = window.location.hash.substr(1);
+
+        let http = new XMLHttpRequest();
+
+        let url = "http://localhost:3000/getOneProduct/";
+
+        http.open("GET", url + productID, true);
+
+        http.send();
+
+        http.onload = function() {
+            let data = JSON.parse(this.responseText);
+
+            // console.log(data.image);
+            let images = "";
+
+            for(var i = 0; i < data.image.length; i++){
+                // console.log("Image number " + i + ": ");
+                // console.log(data.image[i].image_);
+
+                images += "<span class=\"pip\">" +
+                "<img class=\"imageThumb\" src=\"" + data.image[i].image_ + "\" />" +
+                "<br/><span class=\"remove\" onclick=" + "removeImages();" + " id=" + "pip" + ">Xoá ảnh</span>" +
+                "</span>";
+            }
+
+            $(document).ready(function () {
+                $(images).appendTo("#editImages");
+            });
+        }
+    }
+
+    getImgaesProduct();
+
+    function updateImgProduct() {
+        let productID = window.location.hash.substr(1);
+
+        let http = new XMLHttpRequest();
+
+        let url = "http://localhost:3000/updateProductImage";
+
+        http.open("PUT", url, true);
+
+        http.setRequestHeader('Content-type','application/json; charset=utf-8');
+
+        //Tmp
+        let imagesProduct = {
+            productID: productID,
+            image_: [],
+        }
+
+        http.onload = function() {
+            http.onload = function(){
+                if(this.readyState == 4 && this.status == 200){
+                  changeManagement('/managementproduct');
+                  return false;
+                }else{
+                    alert("Thêm sản phẩm thất bại!");
+                    changeManagement('/managementproduct');
+                    return false;
+                }
+            }
+        }
+
+        http.send();
+    }    
 
 }
 
@@ -302,8 +372,6 @@ let changeDetailProduct = (pathName, id) =>{
             "<p class=" + "h3" + " id=" + "priceProduct" + ">" + "Giá tiền: " + data.information[0].productPrice + "</p>" +
             "</center>";
 
-            console.log(detailProduct)
-
             $(document).ready(function () {
                 $(detailProduct).appendTo("#informationPoduct");
             });
@@ -316,3 +384,4 @@ let changeDetailProduct = (pathName, id) =>{
 
 //Inlucde html to index
 app.innerHTML = routes[window.location.pathname];
+

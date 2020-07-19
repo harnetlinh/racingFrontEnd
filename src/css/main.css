@@ -31,3 +31,50 @@ p.h3 {
     margin-top: 20px;
     margin-bottom: 30px;
 }
+
+input[type="file"] {
+    display: block;
+}
+.imageThumb {
+    max-height: 300px;
+    border: 2px solid;
+    padding: 1px;
+    cursor: pointer;
+    justify-content: center;
+}
+.pip {
+    display: inline-block;
+    margin: 50px 50px 50px 50px;
+}
+.remove {
+    display: block;
+    background: #353b48;
+    border: 1px solid black;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.remove:hover {
+    background: #c23616;
+    color: white;
+}
+
+#btn-updateimgProduct{
+    width: 50%;
+    margin-bottom: 40px;
+    display: flexbox;
+    align-items: center;
+    justify-content: center;
+}
+
+#editImages{
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+#imgProductsUpdate{
+    text-align: left;
+}

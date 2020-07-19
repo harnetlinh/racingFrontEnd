@@ -77,7 +77,7 @@ let addproduct = `
             <label for="files">Một số ảnh minh hoạ về mẫu xe</label>
             <input onchange="load(this)" type="file" class="form-control-file" id="files" name="files[]" multiple>
            
-            <small id="imagehelp" class="form-text text-muted">Bạn chỉ có thể đăng tối đa 9MB.</small>
+            <small id="imagehelp" class="form-text text-muted">Bạn chỉ có thể đăng tối đa 9MB/1 lần.</small>
         </div>
 
         <button type="button" class="btn btn-primary" id="btn-addProduct" onclick="AddProduct();">Thêm mẫu xe</button>

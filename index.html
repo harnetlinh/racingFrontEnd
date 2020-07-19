@@ -36,9 +36,11 @@
     <script src="./templates/updateimagesproduct.js"></script>
     <script src="./templates/detailproduct.js"></script>
 
+    <!-- Ajax -->
     <script src="./ajax/addProduct.js"></script>
     <script src="./ajax/deleteProduct.js"></script>
     <script src="./ajax/updateProduct.js"></script>
+    <script src="./ajax/updateImagesProduct.js"></script>
 
 </head>
 <body>
@@ -58,7 +60,7 @@
         
         <ul class="navbar-nav">
             <!-- Title -->
-            <li class="nav-item active"> <a class="nav-link" href="#"> Trang chủ </a> </li>
+            <li class="nav-item active"> <a class="nav-link" href="#" onclick="changeHome('/'); return false;"> Trang chủ </a> </li>
             <!-- Toggle menu 1 -->
             <li class="nav-item dropdown">
                 <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">  Loại ô tô  </a>

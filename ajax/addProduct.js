@@ -69,6 +69,7 @@ function AddProduct(){
                 }else{
                     alert("Thêm sản phẩm thất bại!");
                     changeAdd("/addproduct");
+                    return false;
                 }
             }
 
