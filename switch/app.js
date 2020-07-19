@@ -289,6 +289,8 @@ let changeUpdateImagesProduct = (pathName, id) =>{
             // console.log(data.image);
             let images = "";
 
+            localStorage.setItem("numberImgUpdate", data.image.length);
+
             for(var i = 0; i < data.image.length; i++){
                 // console.log("Image number " + i + ": ");
                 // console.log(data.image[i].image_);
@@ -296,49 +298,19 @@ let changeUpdateImagesProduct = (pathName, id) =>{
                 images += "<span class=\"pip\">" +
                 "<img class=\"imageThumb\" src=\"" + data.image[i].image_ + "\" />" +
                 "<br/><span class=\"remove\" onclick=" + "removeImages();" + " id=" + "pip" + ">Xoá ảnh</span>" +
-                "</span>";
+                "</span>"
             }
 
             $(document).ready(function () {
                 $(images).appendTo("#editImages");
+                $(".remove").click(function(){
+                    $(this).parent(".pip").remove();
+                });
             });
         }
     }
 
     getImgaesProduct();
-
-    function updateImgProduct() {
-        let productID = window.location.hash.substr(1);
-
-        let http = new XMLHttpRequest();
-
-        let url = "http://localhost:3000/updateProductImage";
-
-        http.open("PUT", url, true);
-
-        http.setRequestHeader('Content-type','application/json; charset=utf-8');
-
-        //Tmp
-        let imagesProduct = {
-            productID: productID,
-            image_: [],
-        }
-
-        http.onload = function() {
-            http.onload = function(){
-                if(this.readyState == 4 && this.status == 200){
-                  changeManagement('/managementproduct');
-                  return false;
-                }else{
-                    alert("Thêm sản phẩm thất bại!");
-                    changeManagement('/managementproduct');
-                    return false;
-                }
-            }
-        }
-
-        http.send();
-    }    
 
 }
 

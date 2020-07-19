@@ -42,7 +42,7 @@ function AddProduct(){
         let imgProduct = [];
         if(imgs.length != 0){
             for(var i = 0; i < imgs.length; i++){
-                if(!imgs[i].src == ""){
+                if(imgs[i].src != ""){
                     imgProduct.push(imgs[i].currentSrc);
                 }
             }
